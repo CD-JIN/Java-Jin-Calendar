@@ -111,14 +111,12 @@ public class Prompt {
 		String date = s.next();
 		String text = "";
 		System.out.println("일정을 입력해주세요. (문장의 끝에 ;을 입력해주세요.)");
-		while (true) {
-			String word = s.next();
+		String word;
+		while(!(word = s.next()).endsWith(";")) {
 			text += word + " ";
-			if (word.endsWith(";")) {
-				break;
-			}
 		}
-		
+		word = word.replace(";", "");
+		text += word;
 		c.registerPlan(date, text);
 	}
 
